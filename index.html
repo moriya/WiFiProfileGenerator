@@ -46,6 +46,14 @@
       This is used to dictate which fields are read / receive output (eg; for the passphrase, SSID, encryption type, etc. */
       var pagePlatform = "iOS";
       /* var pagePlatform = "AndroidWindows"; */
+      
+      // UUID generation function
+      function generateUUID() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+          return v.toString(16).toUpperCase();
+        });
+      }
 
       function toHex(input) {
           var result = "";
@@ -85,6 +93,8 @@
               changeText(value, optElementId);
               changeColor('aqua',optElementId);
               };
+              // Regenerate UUIDs when input changes
+              generateAndSetUUIDs();
           });
       };
 
@@ -96,6 +106,8 @@
             var optionalTarget = document.getElementById(optElementId);
             changeText(optElementIdValue,optionalTarget);
             changeColor(color,optionalTarget);};
+          // Regenerate UUIDs when radio button changes
+          generateAndSetUUIDs();
       };
 
       function passphraseEnableDisable(EnableDisable) {
@@ -146,11 +158,31 @@
       This is by the "readHex" and "inputText" functions (Only Android/Windows use the "readHex" function). */
       pageLoad(pagePlatform);
       
+      // Generate UUIDs on page load
+      function generateAndSetUUIDs() {
+        var wifiUUID = generateUUID();
+        var mainUUID1 = generateUUID();
+        var mainUUID2 = generateUUID();
+        
+        $('#outputWifiUUID').text(wifiUUID).css('color', 'aqua');
+        $('#outputWifiUUID2').text(wifiUUID).css('color', 'aqua');
+        $('#outputMainUUID').text(mainUUID1).css('color', 'aqua');
+        $('#outputMainUUID2').text(mainUUID2).css('color', 'aqua');
+      }
+      
       // Download functionality for iOS profile
       $(document).ready(function() {
+        // Generate UUIDs when page loads
+        generateAndSetUUIDs();
         $('#downloadProfile').click(function() {
           // Get the generated profile content
           var profileContent = $('#generated_profile').text();
+          
+          // Get SSID for filename
+          var ssid = $('#outputSSID').text() || 'wifi-profile';
+          // Add timestamp to make filename unique
+          var timestamp = new Date().getTime();
+          var filename = ssid + '-' + timestamp + '.mobileconfig';
           
           // Create a Blob with the content
           var blob = new Blob([profileContent], { type: 'application/x-apple-aspen-config' });
@@ -159,7 +191,7 @@
           var url = window.URL.createObjectURL(blob);
           var a = document.createElement('a');
           a.href = url;
-          a.download = 'wifi-profile.mobileconfig';
+          a.download = filename;
           
           // Trigger the download
           document.body.appendChild(a);
@@ -358,11 +390,11 @@
             &lt;key&gt;PayloadDisplayName&lt;/key&gt;
             &lt;string&gt;<span id="outputDisplayName">Company Wi-Fi</span>&lt;/string&gt;
             &lt;key&gt;PayloadIdentifier&lt;/key&gt;
-            &lt;string&gt;com.apple.wifi.managed.5A2AE473-F6B7-4D60-9778-B25D26317C41&lt;/string&gt;
+            &lt;string&gt;com.apple.wifi.managed.<span id="outputWifiUUID">5A2AE473-F6B7-4D60-9778-B25D26317C41</span>&lt;/string&gt;
             &lt;key&gt;PayloadType&lt;/key&gt;
             &lt;string&gt;com.apple.wifi.managed&lt;/string&gt;
             &lt;key&gt;PayloadUUID&lt;/key&gt;
-            &lt;string&gt;5A2AE473-F6B7-4D60-9778-B25D26317C41&lt;/string&gt;
+            &lt;string&gt;<span id="outputWifiUUID2">5A2AE473-F6B7-4D60-9778-B25D26317C41</span>&lt;/string&gt;
             &lt;key&gt;PayloadVersion&lt;/key&gt;
             &lt;integer&gt;1&lt;/integer&gt;
             &lt;key&gt;ProxyType&lt;/key&gt;
@@ -374,13 +406,13 @@
     &lt;key&gt;PayloadDisplayName&lt;/key&gt;
     &lt;string&gt;<span id="outputBottomDisplayName">Company Wi-Fi</span>&lt;/string&gt;
     &lt;key&gt;PayloadIdentifier&lt;/key&gt;
-    &lt;string&gt;WiFi-PSK-Sample.D5B78A3C-CDA8-471F-984C-06F977EF870C&lt;/string&gt;
+    &lt;string&gt;WiFi-PSK-Sample.<span id="outputMainUUID">D5B78A3C-CDA8-471F-984C-06F977EF870C</span>&lt;/string&gt;
     &lt;key&gt;PayloadRemovalDisallowed&lt;/key&gt;
     &lt;false/&gt;
     &lt;key&gt;PayloadType&lt;/key&gt;
     &lt;string&gt;Configuration&lt;/string&gt;
     &lt;key&gt;PayloadUUID&lt;/key&gt;
-    &lt;string&gt;444C9683-221C-49AF-997D-2B6B84710DAA&lt;/string&gt;
+    &lt;string&gt;<span id="outputMainUUID2">444C9683-221C-49AF-997D-2B6B84710DAA</span>&lt;/string&gt;
     &lt;key&gt;PayloadVersion&lt;/key&gt;
     &lt;integer&gt;1&lt;/integer&gt;
 &lt;/dict&gt;

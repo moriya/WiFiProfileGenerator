@@ -145,6 +145,12 @@
           // Get the generated profile content
           var profileContent = $('#generated_profile').text();
           
+          // Get SSID for filename
+          var ssid = $('#outputSSID').text() || 'wifi-profile';
+          // Add timestamp to make filename unique
+          var timestamp = new Date().getTime();
+          var filename = ssid + '-' + timestamp + '.xml';
+          
           // Create a Blob with the content
           var blob = new Blob([profileContent], { type: 'text/xml' });
           
@@ -152,7 +158,7 @@
           var url = window.URL.createObjectURL(blob);
           var a = document.createElement('a');
           a.href = url;
-          a.download = 'wifi-profile.xml';
+          a.download = filename;
           
           // Trigger the download
           document.body.appendChild(a);
