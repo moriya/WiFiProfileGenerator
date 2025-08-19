@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>iOS Wi-Fi Profile Generator</title>
+    <title>iOS Wi-Fiプロファイルジェネレーター</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -177,10 +177,10 @@
         <main role="main" class="pb-1 pt-2">
           <!-- navbar -->
             <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-              <span class="navbar-brand" href=".">Wi-Fi Profile Generator</span>
+              <span class="navbar-brand" href=".">Wi-Fiプロファイルジェネレーター</span>
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">iOS <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="#">iOS <span class="sr-only">(現在)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="./android.html">Android & Windows</a>
@@ -195,18 +195,18 @@
             <!-- This is the "What is this for?" box-->
             <div class="card text-light bg-dark mb-3 border-secondary">
                 <div class="card-body">
-                    <h3 class="card-title font-weight-bold">What is this for?</h3>
-                    <p>Apple offers tools, such as <a href="https://support.apple.com/apple-configurator" target="_blank">Apple Configurator</a> that allow you to create your own iOS Configuration Profiles.<br>
-                    Apple Configurator is only availble for MacOS devices. This is useful if you do not have access to one but still need this.</p>
+                    <h3 class="card-title font-weight-bold">これは何のためのツール？</h3>
+                    <p>Appleは<a href="https://support.apple.com/apple-configurator" target="_blank">Apple Configurator</a>などのツールを提供しており、独自のiOS構成プロファイルを作成できます。<br>
+                    Apple ConfiguratorはmacOSデバイスでのみ利用可能です。このツールは、Macを持っていない場合でもプロファイルが必要な場合に便利です。</p>
                     <hr />
 
-                    <p>This site will help generate a configuration profile based on the network information you provide. <br>
-                        Using this, you can import the profile into your mobile devices (via a method such as an MDM).</p>
-                    <p>You can see all of the modified output in the bottom as <b><span style="color:aqua">aqua</span></b> text.</p>
+                    <p>このサイトは、提供されたネットワーク情報に基づいて構成プロファイルを生成するのに役立ちます。<br>
+                        これを使用して、モバイルデバイスにプロファイルをインポートできます（MDMなどの方法を使用）。</p>
+                    <p>変更された出力は下部に<b><span style="color:aqua">水色</span></b>のテキストで表示されます。</p>
                     <hr /> 
-                    <p class="font-italic">All of this is run client-side, within the browser. </p>
+                    <p class="font-italic">すべての処理はブラウザ内でクライアント側で実行されます。</p>
                     <hr />
-                    <span class="font-weight-light"><p>Extra stuff:</p>
+                    <span class="font-weight-light"><p>追加情報：</p>
                       <a class="text-primary" href="https://developer.apple.com/documentation/devicemanagement?language=objc" target="_blank">Apple MDM Configuration Profile Reference</a></span>
                 </div>
             </div>
@@ -215,7 +215,7 @@
             <!-- This is the box containing the Wi-Fi network input -->
             <div class="card text-light bg-dark border-secondary">
                 <div class="card-body">
-                    <h5 class="card-title font-weight-bold">Fill out your Wi-Fi network details below. This only supports "Personal" connections.</h5>
+                    <h5 class="card-title font-weight-bold">以下にWi-Fiネットワークの詳細を入力してください。「パーソナル」接続のみサポートしています。</h5>
                         
                         <!-- This is where the Input forms begin 
                           In essence, every field is labeled as "inputX" - where X is the property we're modifying. 
@@ -224,26 +224,26 @@
                             <div class="form-group row">
                               <label for="inputSSID" class="col-sm-2 col-form-label">Wi-Fi SSID</label>
                               <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputSSID" placeholder="Enter your Wi-Fi network's SSID">
+                                <input type="text" class="form-control" id="inputSSID" placeholder="Wi-FiネットワークのSSIDを入力">
                               </div>
                             </div>
                             <div class="form-group row">
-                              <label for="inputPassphrase" class="col-sm-2 col-form-label">Pre-Shared Key/Passphrase</label>
+                              <label for="inputPassphrase" class="col-sm-2 col-form-label">事前共有キー/パスフレーズ</label>
                               <div class="col-sm-10">
                                 <!-- setting the "type" to password means the browser won't reveal it, and shows the eye to reveal it if they want -->
-                                <input type="password" class="form-control" id="inputPassphrase" placeholder="Enter passphrase" disabled>
+                                <input type="password" class="form-control" id="inputPassphrase" placeholder="パスフレーズを入力" disabled>
                               </div>
                             </div>
                             <fieldset class="form-group">
                               <div class="row">
-                                <legend class="col-form-label col-sm-2 pt-0">Security</legend>
+                                <legend class="col-form-label col-sm-2 pt-0">セキュリティ</legend>
                                 <div class="col-sm-10">
                                   <div class="form-check">
                                       <!-- This is where the user can select the desired security types - Open, WEP, WPA, WPA2, Any
                                       WEP is not suggested simply because it's terrible from a security perspective -->
                                     <input class="form-check-input" type="radio" name="SecurityRadios" id="inputSecurityOpen" value="option1" onclick="openSecurity()" checked>
                                     <label class="form-check-label" for="gridRadios1">
-                                      Open / None
+                                      オープン / なし
                                     </label>
                                   </div>
                                   <div class="form-check">
@@ -255,13 +255,13 @@
                                   <div class="form-check">
                                     <input class="form-check-input" type="radio" name="SecurityRadios" id="inputSecurityWPA" value="option3" onclick="changeValue('outputSecurityType','WPA2','aqua');passphraseEnableDisable('enable')">
                                     <label class="form-check-label" for="gridRadios3">
-                                      WPA/WPA2 Personal
+                                      WPA/WPA2 パーソナル
                                     </label>
                                   </div>
                                   <div class="form-check">
                                     <input class="form-check-input" type="radio" name="SecurityRadios" id="inputSecurityAny" value="option4" onclick="changeValue('outputSecurityType','Any','aqua');passphraseEnableDisable('enable')">
                                     <label class="form-check-label" for="gridRadios4">
-                                      Any Encryption (WEP/WPA/WPA2)
+                                      すべての暗号化 (WEP/WPA/WPA2)
                                     </label>
                                   </div>
                                 </div>
@@ -270,19 +270,19 @@
                             <fieldset class="form-group">
                               <div class="row">
                                 <!-- This is where the user can specify if the network is hidden or not -->
-                                <legend class="col-form-label col-sm-2 pt-0">Hidden network?</legend>
+                                <legend class="col-form-label col-sm-2 pt-0">非表示ネットワーク？</legend>
                                 <div class="col-sm-10">
                                   <div class="form-check-inline">
                                     <input class="form-check-input" type="radio" name="hiddenRadios" id="inputHiddenNo" value="option1" onclick="changeValue('outputHidden','false','white')" checked>
                                     <label class="form-check-label" for="gridRadios1">
-                                      No
+                                      いいえ
                                     </label>
                                   </div>
 
                                   <div class="form-check-inline">
                                     <input class="form-check-input" type="radio" name="hiddenRadios" id="inputHiddenYes" value="option2" onclick="changeValue('outputHidden','true','aqua')">
                                     <label class="form-check-label" for="gridRadios2">
-                                      Yes
+                                      はい
                                     </label>
                                   </div>
                                 </div>
@@ -293,18 +293,18 @@
                             <fieldset class="form-group">
                               <div class="row">
                                 <!-- This is where you can specify if the device will connect to Wi-Fi automatically when in range  -->
-                                <legend class="col-form-label col-sm-2 pt-0">Auto Join?</legend>
+                                <legend class="col-form-label col-sm-2 pt-0">自動接続？</legend>
                                 <div class="col-sm-10">
                                   <div class="form-check-inline">
                                     <input class="form-check-input" type="radio" name="AutoJoinRadios" id="inputAutoJoinYes" value="option1" onclick="changeValue('outputAutoJoin','true','white')" checked>
                                     <label class="form-check-label" for="gridRadios1">
-                                      Yes
+                                      はい
                                     </label>
                                   </div>
                                   <div class="form-check-inline">
                                     <input class="form-check-input" type="radio" name="AutoJoinRadios" id="inputAutoJoinNo" value="option2" onclick="changeValue('outputAutoJoin','false','aqua')">
                                     <label class="form-check-label" for="gridRadios2">
-                                      No
+                                      いいえ
                                     </label>
                                   </div>
                                 </div>
@@ -314,9 +314,9 @@
                           </form>
 
                         <div class="form-group row">
-                          <label for="inputDisplayName" class="col-sm-2 col-form-label">Display Name</label>
+                          <label for="inputDisplayName" class="col-sm-2 col-form-label">表示名</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputDisplayName" placeholder="(Optional) Gives a brief display name for this Wi-Fi Profile shown to end-users">
+                            <input type="text" class="form-control" id="inputDisplayName" placeholder="（オプション）エンドユーザーに表示されるWi-Fiプロファイルの簡潔な表示名">
                           </div>
                         </div>
                 </div>
@@ -327,10 +327,10 @@
                   <!-- The "Generated Profile" card at the bottom 
                   This simply contains the escaped, default XML that I've entered - contains  the values (span's with ID's such as #outputHidden) with what is entered above 
                   This is presented in a pre-scrollable code box -->
-                    <h4 class="card-title font-weight-bold">Generated Profile</h4>
+                    <h4 class="card-title font-weight-bold">生成されたプロファイル</h4>
 
                     <div class="col-auto">
-                      <button type="button" class="btn btn-primary" id="downloadProfile" active>Download</button>
+                      <button type="button" class="btn btn-primary" id="downloadProfile" active>ダウンロード</button>
                     </div>
                       <hr />
                     <!-- Since "pre" attributes retain spacing, the profile has white spaced removed so it isn't copied when the user gets it -->

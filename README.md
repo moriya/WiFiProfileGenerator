@@ -5,6 +5,9 @@
   - iOS: `.mobileconfig`ファイルとしてダウンロード
   - Android/Windows: `.xml`ファイルとしてダウンロード
 - **clipboard.jsの削除**: ダウンロード機能への移行に伴い、clipboard.jsへの依存を削除しました
+- **日本語化**: index.htmlとandroid.htmlのインターフェースを日本語に翻訳しました
+  - ナビゲーション、説明文、フォームラベル、プレースホルダーテキストなどすべてのUI要素を日本語化
+  - 技術的な参照リンクは元の言語のまま維持
 
 ## Table of contents
   - [What does it do?](#what-does-it-do)

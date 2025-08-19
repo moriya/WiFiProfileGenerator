@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Android & Windows Wi-Fi Profile Generator</title>
+    <title>Android & Windows Wi-Fiプロファイルジェネレーター</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -170,14 +170,14 @@
         <main role="main" class="pb-1 pt-2">
           <!-- navbar -->
             <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-              <span class="navbar-brand">Wi-Fi Profile Generator</span>
+              <span class="navbar-brand">Wi-Fiプロファイルジェネレーター</span>
               <ul class="navbar-nav mr-auto">
                   <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
                   <li class="nav-item">
                     <a class="nav-link" href="./index.html">iOS</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="#">Android & Windows <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#">Android & Windows <span class="sr-only">(現在)</span></a>
                   </li>
               </ul>
               <ul class="navbar-nav">
@@ -189,23 +189,23 @@
             <!-- This is the "What is this for?" box-->
             <div class="card text-light bg-dark mb-3 border-secondary">
                 <div class="card-body">
-                    <h3 class="card-title font-weight-bold">What is this for?</h3>
-                    <p>If you need to configure your Android or Windows devices, using a Wi-Fi network - you can either use the GUI, or this.  <br>
-                    Sometimes the option you need isn't in the UI - so as a workaround, you can find out what the manual option is and generate it. <br>
-                    This is meant to be a supplement to that.</p>
+                    <h3 class="card-title font-weight-bold">これは何のためのツール？</h3>
+                    <p>AndroidまたはWindowsデバイスでWi-Fiネットワークを設定する必要がある場合、GUIまたはこのツールを使用できます。<br>
+                    時には必要なオプションがUIにない場合があります - その場合の回避策として、手動オプションを確認して生成できます。<br>
+                    このツールはその補完を目的としています。</p>
                     <hr />
-                    <p>Both Android & Windows use the same XML format, as far as I'm aware (there might be fields that vary). 
-                    Use this as the basis, and enjoy! <br>
+                    <p>私の知る限り、AndroidとWindowsは同じXML形式を使用しています（一部のフィールドは異なる場合があります）。
+                    これをベースとしてお使いください！<br>
 
-                    <p>This site will help generate a configuration profile based on the network information you provide. <br>
-                        Using this, you can import the profile into your mobile devices (via a method such as an MDM).</p>
-                    <p>You can see all of the modified output in the bottom as <b><span style="color:aqua">aqua</span></b> text.</p>
+                    <p>このサイトは、提供されたネットワーク情報に基づいて構成プロファイルを生成するのに役立ちます。<br>
+                        これを使用して、モバイルデバイスにプロファイルをインポートできます（MDMなどの方法を使用）。</p>
+                    <p>変更された出力は下部に<b><span style="color:aqua">水色</span></b>のテキストで表示されます。</p>
                     <hr />
-                    <p class="font-italic">All of this is run client-side, within the browser. </p>
+                    <p class="font-italic">すべての処理はブラウザ内でクライアント側で実行されます。</p>
                     <hr />
-                    <span class="font-weight-light"><p>Extra stuff: </p>
-                      <a class="text-primary" href="https://docs.microsoft.com/en-us/windows/win32/nativewifi/wireless-profile-samples" target="_blank">Wireless profile samples</a><br>
-                      <a class="text-primary" href="https://docs.microsoft.com/en-us/windows/win32/nativewifi/wlan-profileschema-elements" target="_blank">XML Profile Elements</a></span>
+                    <span class="font-weight-light"><p>追加情報：</p>
+                      <a class="text-primary" href="https://docs.microsoft.com/en-us/windows/win32/nativewifi/wireless-profile-samples" target="_blank">ワイヤレスプロファイルサンプル</a><br>
+                      <a class="text-primary" href="https://docs.microsoft.com/en-us/windows/win32/nativewifi/wlan-profileschema-elements" target="_blank">XMLプロファイル要素</a></span>
                 </div>
             </div>
             <hr />
@@ -213,7 +213,7 @@
             <!-- This is the box containing the Wi-Fi network input -->
             <div class="card text-light bg-dark border-secondary">
                 <div class="card-body">
-                    <h5 class="card-title font-weight-bold">Fill out your Wi-Fi network details below. This only supports "Personal" connections.</h5>
+                    <h5 class="card-title font-weight-bold">以下にWi-Fiネットワークの詳細を入力してください。「パーソナル」接続のみサポートしています。</h5>
                         
                         <!-- This is where the Input forms begin 
                           In essence, every field is labeled as "inputX" - where X is the property we're modifying. Do not adjust the ID's without understanding the functions at the top. 
@@ -222,34 +222,34 @@
                             <div class="form-group row">
                               <label for="inputSSID" class="col-sm-2 col-form-label">Wi-Fi SSID</label>
                               <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputSSID" placeholder="Enter your Wi-Fi network's SSID">
+                                <input type="text" class="form-control" id="inputSSID" placeholder="Wi-FiネットワークのSSIDを入力">
                               </div>
 
                             </div>
                             <div class="form-group row">
-                              <label for="inputPassphrase" class="col-sm-2 col-form-label">Pre-Shared Key/Passphrase</label>
+                              <label for="inputPassphrase" class="col-sm-2 col-form-label">事前共有キー/パスフレーズ</label>
                               <div class="col-sm-10">
                                 <!-- setting the "type" to password means the browser won't reveal it, and shows the eye to reveal it if they want -->
-                                <input type="password" class="form-control" id="inputPassphrase" placeholder="Enter passphrase" disabled>
+                                <input type="password" class="form-control" id="inputPassphrase" placeholder="パスフレーズを入力" disabled>
                               </div>
                             </div>
                             <fieldset class="form-group">
                               <div class="row">
-                                <legend class="col-form-label col-sm-2 pt-0">Security</legend>
+                                <legend class="col-form-label col-sm-2 pt-0">セキュリティ</legend>
                                 <div class="col-sm-10">
                                   <div class="form-check">
                                     <!-- This is where the user can select the desired security types - Open, WEP, WPA WPA2.
                                       WEP is disabled simply because it's terrible from a security perspective, and WPA/WPA2 both use AES as TKIP is no longer hardware accelerated.  -->
                                     <input class="form-check-input" type="radio" name="SecurityRadios" id="inputSecurityOpen" value="option1" onclick="openSecurity()" checked>
                                     <label class="form-check-label" for="gridRadios1">
-                                      Open / None
+                                      オープン / なし
                                     </label>
                                   </div>
 
                                   <div class="form-check">
                                     <input class="form-check-input" type="radio" name="SecurityRadios" id="inputSecurityWEP" value="option2" disabled>
                                     <label class="form-check-label" for="gridRadios2">
-                                      WEP (not supported)
+                                      WEP (サポート対象外)
                                     </label>
                                   </div>
                                   <div class="form-check">
@@ -270,18 +270,18 @@
                             <fieldset class="form-group">
                               <div class="row">
                                 <!-- This is where the user can specify if the network is hidden or not -->
-                                <legend class="col-form-label col-sm-2 pt-0">Hidden network?</legend>
+                                <legend class="col-form-label col-sm-2 pt-0">非表示ネットワーク？</legend>
                                 <div class="col-sm-10">
                                   <div class="form-check-inline">
                                     <input class="form-check-input" type="radio" name="hiddenRadios" id="inputHiddenNo" value="option1" onclick="changeValue('outputHidden','false','white')" checked>
                                     <label class="form-check-label" for="gridRadios1">
-                                      No
+                                      いいえ
                                     </label>
                                   </div>
                                   <div class="form-check-inline">
                                     <input class="form-check-input" type="radio" name="hiddenRadios" id="inputHiddenYes" value="option2" onclick="changeValue('outputHidden','true','aqua')">
                                     <label class="form-check-label" for="gridRadios2">
-                                      Yes
+                                      はい
                                     </label>
                                   </div>
                                 </div>
@@ -292,18 +292,18 @@
                             <fieldset class="form-group">
                               <div class="row">
                                 <!-- This is where you can specify if the device will connect to Wi-Fi automatically when in range  -->
-                                <legend class="col-form-label col-sm-2 pt-0">Automatically connect?</legend>
+                                <legend class="col-form-label col-sm-2 pt-0">自動接続？</legend>
                                 <div class="col-sm-10">
                                   <div class="form-check-inline">
                                     <input class="form-check-input" type="radio" name="AutoJoinRadios" id="inputAutoJoinYes" value="option1" onclick="changeValue('outputAutoJoin','auto','white')" checked>
                                     <label class="form-check-label" for="gridRadios1">
-                                      Yes
+                                      はい
                                     </label>
                                   </div>
                                   <div class="form-check-inline">
                                     <input class="form-check-input" type="radio" name="AutoJoinRadios" id="inputAutoJoinNo" value="option2" onclick="changeValue('outputAutoJoin','manual','aqua')">
                                     <label class="form-check-label" for="gridRadios2">
-                                      No
+                                      いいえ
                                     </label>
                                   </div>
                                 </div>
@@ -320,10 +320,10 @@
                   This  contains the escaped, default XML that I've started with - and after the user puts their input, it will be rendered here too. 
                   The values are placed into span elements with specifics ID's, via the functions at the start. 
                   This is presented in a pre-scrollable code box -->
-                    <h4 class="card-title font-weight-bold">Generated Profile</h4>
+                    <h4 class="card-title font-weight-bold">生成されたプロファイル</h4>
 
                     <div class="col-auto">
-                      <button type="button" class="btn btn-primary" id="downloadProfile" active>Download</button>
+                      <button type="button" class="btn btn-primary" id="downloadProfile" active>ダウンロード</button>
                     </div>
                       <hr />
                     <!-- Since "pre" attributes retain spacing, the profile has white spaced removed so it isn't copied when the user gets it -->
