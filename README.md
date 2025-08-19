@@ -1,5 +1,11 @@
 # WiFi Mobile Configuration Profile Generator
 
+## Recent Updates (2025-08-19)
+- **Download機能の実装**: 「Copy to clipboard」ボタンを「Download」ボタンに変更し、生成されたプロファイルを直接ファイルとしてダウンロードできるようになりました
+  - iOS: `.mobileconfig`ファイルとしてダウンロード
+  - Android/Windows: `.xml`ファイルとしてダウンロード
+- **clipboard.jsの削除**: ダウンロード機能への移行に伴い、clipboard.jsへの依存を削除しました
+
 ## Table of contents
   - [What does it do?](#what-does-it-do)
   - [How does it work?](#how-does-it-work)
@@ -18,7 +24,7 @@ I've ran into a lot of scenarios where I need to make a Wi-Fi profile manually -
 On iOS, this is normally possible with a tool Apple provides called **Apple Configurator** - I do not have a Mac, and this tool only works on Mac devices - so this is the best next thing! 
 Windows & Android use the same format, so you can typically export a configured Wi-Fi network from a Windows machine, and import into an MDM to deploy widespread, but also to your Android devices. 
 
-This web app makes the job simple - you don't have to do any sort of exports, or use Apple Configurtor - you simply fill out the details, copy the profile to your clipboard, and you can use it however you wish - usually the contents are saved in a format such as ***wifi.mobileConfig*** for iOS, or something such as ***wifi.xml*** format for Windows & Android.
+This web app makes the job simple - you don't have to do any sort of exports, or use Apple Configurtor - you simply fill out the details, download the profile, and you can use it however you wish - the file is automatically saved in the correct format: ***wifi.mobileconfig*** for iOS, or ***wifi.xml*** for Windows & Android.
 
 ## How does it work?
 
@@ -32,9 +38,8 @@ It's a standalone webpage (it does have CSS/JavaScript dependencies - more on th
 
 1. [Bootstrap](https://getbootstrap.com/) 4.4.1 for the CSS framework
 2. [jQuery](https://jquery.com/) for the data validation / reading / manipulation 
-3. [Clipboard.js](https://clipboard.js) for the "Copy to clipboard" function
 
-Bootstrap and jQuery are loaded from their CDN - the Clipboard.js framework is loaded locally (in the "js" folder) - the source code is simple, I left the line in that you can edit if you simply want a single .html file to use internally.
+Bootstrap and jQuery are loaded from their CDN.
 
 ## How do I use it?
 
@@ -43,24 +48,6 @@ Bootstrap and jQuery are loaded from their CDN - the Clipboard.js framework is l
 - You can simply use the GitHub pages link I have hosted! https://daduckmsft.github.io/WiFiProfileGenerator/
 - Alternatively, you can download everything from [here](https://github.com/daduckMSFT/WiFiProfileGenerator/releases/latest), unzip, and enjoy! Nothing else needed - it should just work.
 - If you want to host the dependencies yourself, you can surely do so, but it's way outside of the scope that I'll cover here!
-- If you simply want a page, without even the clipboard.js local dependency - you can edit the page to load it from the CDN.
-
-Edit the html files for both, and you'll see some lines in the ```<body>``` that look like this:
-```html
-    <!-- Load clipboard.js from local repo -->
-    <script src="./js/clipboard.min.js"></script>
-```
-
-You can comment those out, and make it look like the following to use the Clipboard.js CDN:
-
-```html
-    <!-- Load clipboard.js from local repo
-    <script src="./js/clipboard.min.js"></script>  -->
-    <!-- Load clipboard.js from CDN -->
-    <script src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script>
-```
-
-(If this ever fails, they have CDN providers on their GitHub wiki, found [here](https://github.com/zenorocha/clipboard.js/wiki/CDN-Providers)
 
 ## Functions
 

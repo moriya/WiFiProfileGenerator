@@ -31,11 +31,7 @@
   <body>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <!-- Load clipboard.js from local repo -->
-    <script src="./js/clipboard.min.js"></script>
-    <!-- Load clipboard.js from CDN  
-    <script src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script> -->
-    <script>new ClipboardJS('.btn');</script>
+    <!-- Removed clipboard.js as we're using download functionality instead -->
     <!-- This is what converts the SSID to Hex in the resulting profile
     This function is called immediately on page load and constantly reads the values in the Wi-Fi SSID box and converts it to hex -->
     <script>
@@ -142,6 +138,31 @@
       /* Used to pass the platform (Android/Windows or iOS) to the "pageLoad" function. 
       This is by the "readHex" and "inputText" functions (Only Android/Windows use the "readHex" function). */
       pageLoad(pagePlatform);
+      
+      // Download functionality for Android/Windows profile
+      $(document).ready(function() {
+        $('#downloadProfile').click(function() {
+          // Get the generated profile content
+          var profileContent = $('#generated_profile').text();
+          
+          // Create a Blob with the content
+          var blob = new Blob([profileContent], { type: 'text/xml' });
+          
+          // Create a download link
+          var url = window.URL.createObjectURL(blob);
+          var a = document.createElement('a');
+          a.href = url;
+          a.download = 'wifi-profile.xml';
+          
+          // Trigger the download
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          
+          // Clean up
+          window.URL.revokeObjectURL(url);
+        });
+      });
     </script> 
 
     <!-- This is the parent container, that keeps everything lined up in the middle -->
@@ -302,7 +323,7 @@
                     <h4 class="card-title font-weight-bold">Generated Profile</h4>
 
                     <div class="col-auto">
-                      <button type="button" class="btn btn-primary" data-clipboard-target="#generated_profile" id="CopyAll" active>Copy to clipboard</button>
+                      <button type="button" class="btn btn-primary" id="downloadProfile" active>Download</button>
                     </div>
                       <hr />
                     <!-- Since "pre" attributes retain spacing, the profile has white spaced removed so it isn't copied when the user gets it -->
